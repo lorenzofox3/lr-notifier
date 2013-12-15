@@ -60,8 +60,70 @@ app.config(function(lrNotifierProvider){
 ##animations
 
 If you are using angular >= 1.2.0 you can use animation as for any ng-repeat directive.
+The class name of the items is ``notification-item``
 
-//todo complete here
+```css
+/*
+  We're using CSS transitions for when
+  the enter and move events are triggered
+  for the element that has the .notification-item
+  class
+*/
+.notification-item.ng-enter, .notification-item.ng-move {
+    -webkit-transition:0.5s linear all;
+    -moz-transition:0.5s linear all;
+    -o-transition:0.5s linear all;
+    transition:0.5s linear all;
+    opacity:0;
+}
+
+/*
+ The ng-enter-active and ng-move-active
+ are where the transition destination properties
+ are set so that the animation knows what to
+ animate.
+*/
+.notification-item.ng-enter.ng-enter-active,
+.notification-item.ng-move.ng-move-active {
+    opacity:1;
+}
+
+/*
+  We're using CSS keyframe animations for when
+  the leave event is triggered for the element
+  that has the .notification-item class
+*/
+.notification-item.ng-leave {
+    -webkit-animation:0.5s my_animation;
+    -moz-animation:0.5s my_animation;
+    -o-animation:0.5s my_animation;
+    animation:0.5s my_animation;
+}
+
+@keyframes my_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+}
+
+/*
+  Unfortunately each browser vendor requires
+  its own definition of keyframe animation code...
+*/
+@-webkit-keyframes my_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+}
+
+@-moz-keyframes my_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+}
+
+@-o-keyframes my_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+}
+```
 
 ## Unit tests
 You can run unit test using Karma
@@ -77,7 +139,13 @@ Before submitting a pull request make sure:
 
 ##Licence
 
-MIT License
+Copyright (C) 2013 Laurent Renard.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
