@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>lr notifier test</title>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.5/angular-animate.min.js"></script>
+    <script src="main.js"></script>
+    <script src="src/notifier.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+
+<div class="notification-input">
+    <label for="message">message</label>
+    <input type="text" id="message" ng-model="notification.message"/>
+    <label for="free">free</label>
+    <input type="radio" value="free" id="free" ng-model="notification.level"/>
+    <label for="info" >info</label>
+    <input type="radio" value="info" id="info" ng-model="notification.level"/>
+    <label for="warn">warn</label>
+    <input type="radio" value="warn" id="warn" ng-model="notification.level"/>
+    <label for="error">error</label>
+    <input type="radio" id="error" value="error" ng-model="notification.level"/>
+    <div class="button-stack">
+        <button ng-click="push(0)">channel1</button>
+        <button ng-click="push(1)">channel2</button>
+        <button ng-click="push(2)">channel3</button>
+    </div>
+
+</div>
+
+<ul>
+    <li class="channel">
+        <h2>channel 1</h2>
+        <p>This guy will receive every notification under 'channel1'</p>
+
+        <div lr-notification-stack-container="channel1">
+            {{ notification.level }}: {{ notification.message}}
+        </div>
+    </li>
+    <li class="channel">
+        <h2>channel2</h2>
+        <p>This guy will receive every notification under 'channel2'</p>
+        <div lr-notification-stack-container="channel2">
+            {{ notification.level }}: {{ notification.message}}
+        </div>
+    </li>
+    <li class="channel">
+        <h2>channel3
+        </h2>
+        <p>This guy will receive every notification under 'channel3'</p>
+        <div lr-notification-stack-container="channel3">
+            {{ notification.level }}: {{ notification.message}}
+        </div>
+    </li>
+</ul>
+
+</body>
+</html>
