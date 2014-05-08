@@ -46,7 +46,8 @@
                     removeNotification: ng.bind(this, removeNotification, channel),
                     info: ng.bind(this, logNotification, channel, 'info'),
                     warn: ng.bind(this, logNotification, channel, 'warn'),
-                    error: ng.bind(this, logNotification, channel, 'error')
+                    error: ng.bind(this, logNotification, channel, 'error'),
+                    success: ng.bind(this, logNotification, channel, 'success')
                 };
             };
 
