@@ -79,6 +79,14 @@ describe('notifier module', function () {
             expect(notif).toEqual({message: 'an error message', level: 'error'});
             expect(notif).toBe(channel[0]);
         });
+
+        it('should push a notification with the message and a "success" level', function () {
+            var channel = testChannel.getChannel('channel');
+            var notif = testChannel.success('a success message');
+            expect(channel.length).toEqual(1);
+            expect(notif).toEqual({message: 'a success message', level: 'success'});
+            expect(notif).toBe(channel[0]);
+        });
     });
 
     describe('notifications stack container', function () {

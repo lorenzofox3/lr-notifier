@@ -1,0 +1,35 @@
+{
+    "name": "lr-notifier",
+    "version": "0.1.0",
+    "description": "notification channel/stack for angularjs",
+    "main": "lrNotifier.js",
+    "directories": {
+        "test": "test"
+    },
+    "dependencies": {
+
+    },
+    "devDependencies": {
+        "karma": "~0.12.14",
+        "gulp": "~3.6.2",
+        "gulp-rename": "~1.2.0",
+        "gulp-uglify": "~0.2.1"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lorenzofox3/lr-notifier.git"
+    },
+    "keywords": [
+        "angular",
+        "notifier"
+    ],
+    "author": "Laurent Renard",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/lorenzofox3/lr-notifier/issues"
+    },
+    "homepage": "https://github.com/lorenzofox3/lr-notifier"
+}
