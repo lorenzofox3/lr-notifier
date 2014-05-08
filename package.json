@@ -1,6 +1,6 @@
 {
   "name": "lr-notifier",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "notification channel/stack for angularjs",
   "main": "lrNotifier.js",
   "directories": {
