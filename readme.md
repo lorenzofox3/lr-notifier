@@ -1,5 +1,7 @@
 # lrNotifier
 
+[![Build Status](https://travis-ci.org/lorenzofox3/lr-notifier.svg?branch=master)](https://travis-ci.org/lorenzofox3/lr-notifier)
+
 lrNotifier is a notification module for Angularjs. It is lightweight and very simple (less 75 lines of code) and has no dependency on any third party
  library other than angular framework itself. you can easily customise your notification template and define different channels on the application.
 
