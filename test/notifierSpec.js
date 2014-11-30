@@ -92,7 +92,7 @@ describe('notifier module', function () {
     describe('notifications stack container', function () {
         var element, scope, notifier, testChannel, notifs;
         beforeEach(inject(function ($rootScope, $compile, lrNotifier) {
-            var link = $compile('<div lr-notification-stack-container="test">{{ notification.message }}</div>');
+            var link = $compile('<div lr-notification-stack-container="test"><ul><li ng-click="lrNotifierCtrl.removeNotification(notification)" class="notification-item" ng-repeat="notification in lrNotifierCtrl.notifications">{{ notification.message }}</li></ul></div>');
             scope = $rootScope;
             element = link(scope);
             notifier = lrNotifier;
@@ -107,38 +107,28 @@ describe('notifier module', function () {
         it('should add a notification item when any other component push a notification', function () {
             testChannel.pushNotification({message: 'hello'});
             scope.$digest();
-            notifs = element.find('li.notification-item');
+            notifs = element.find('LI');
             expect(notifs.length).toBe(1);
-            expect($(notifs[0]).text()).toEqual('hello');
+            expect(angular.element(notifs[0]).text()).toEqual('hello');
         });
 
         it('should only react to the channel name specified', function () {
             var whateverChannel = notifier('whatever');
             testChannel.pushNotification({message: 'hello'});
-            whateverChannel.pushNotification({message: 'hello'});
+            whateverChannel.pushNotification({message: 'd'});
             scope.$digest();
-            notifs = element.find('li.notification-item');
+            notifs = element.find('LI');
             expect(notifs.length).toBe(1);
-        });
-
-        it('should have the class according to the level', function () {
-            testChannel.warn('warning');
-            scope.$digest();
-            notifs = element.find('li.notification-item');
-            expect(notifs.length).toBe(1);
-            var li = $(notifs[0]);
-            expect(li.text()).toEqual('warning');
-            expect(li.hasClass('warn')).toBe(true);
         });
 
         it('should remove the notification from the list when clicked', function () {
             testChannel.info('hello');
             scope.$digest();
-            notifs = element.find('li.notification-item');
+            notifs = element.find('LI');
             expect(notifs.length).toBe(1);
-            $(notifs[0]).click();
+            angular.element(notifs[0]).triggerHandler('click');
             scope.$digest();
-            notifs = element.find('li.notification-item');
+            notifs = element.find('LI');
             expect(notifs.length).toBe(0);
         });
 

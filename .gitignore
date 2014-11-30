@@ -1,2 +1,4 @@
-./idea
-./node-modules
+.idea
+node_modules
+example-app
+bower_components

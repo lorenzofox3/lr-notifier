@@ -1,25 +1,29 @@
 {
-    "name": "lr-notifier",
-    "version": "1.0.0",
-    "homepage": "https://github.com/lorenzofox3/lr-notifier",
-    "authors": [
-        "lorenzofox3 <laurent34azerty@gmail.com>"
-    ],
-    "description": "notification channel/stack for angularjs",
-    "main": "src/notifier.js",
-    "keywords": [
-        "angular",
-        "notification"
-    ],
-    "ignore": [
-        ".gitignore",
-        "src/",
-        "test/",
-        "node_modules/",
-        "lib/",
-        "gulpFile.js",
-        "karma.conf.js",
-        ".travis.yml"
-    ],
-    "license": "MIT"
+  "name": "lr-notifier",
+  "version": "1.1.0",
+  "homepage": "https://github.com/lorenzofox3/lr-notifier",
+  "authors": [
+    "lorenzofox3 <laurent34azerty@gmail.com>"
+  ],
+  "description": "notification channel/stack for angularjs",
+  "main": "src/notifier.js",
+  "keywords": [
+    "angular",
+    "notification"
+  ],
+  "ignore": [
+    ".gitignore",
+    "src/",
+    "test/",
+    "node_modules/",
+    "lib/",
+    "gulpFile.js",
+    "karma.conf.js",
+    ".travis.yml"
+  ],
+  "devDependencies": {
+    "angular": "latest",
+    "angular-mocks": "latest"
+  },
+  "license": "MIT"
 }

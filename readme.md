@@ -12,12 +12,16 @@ include the module in your application.
 angular.module('myApp',['lrNotifier']);
 ```
 
-Use the directive in your markup to define a container for a given notification channel and the template of your notifications
+Use the directive in your markup to define a container for a given notification channel and the template of your notifications. The stack container directive create a controller so you can access
+its variable within the html as `lrNotifierCtrl` or extend it from a sub directive
 
 ```markup
 <div lr-notification-stack-container="channelName">
-    <p>This is a very simple template: here is your message....<br/>
-    {{notification.message}}</p>
+    <ul>
+        <li ng-class="notification.level" ng-repeat="notification in lrNotifierCtrl.notifications" ng-click="lrNotifierCtrl.removeNotification(notification)">
+          {{notification.message}}
+        </li>
+    </ul>
 </div>
 ```
 
@@ -62,74 +66,11 @@ app.config(function(lrNotifierProvider){
 ##animations
 
 If you are using angular >= 1.2.0 you can use animation as for any ng-repeat directive.
-The class name of the items is ``notification-item``
 
-```css
-/*
-  We're using CSS transitions for when
-  the enter and move events are triggered
-  for the element that has the .notification-item
-  class
-*/
-.notification-item.ng-enter, .notification-item.ng-move {
-    -webkit-transition:0.5s linear all;
-    -moz-transition:0.5s linear all;
-    -o-transition:0.5s linear all;
-    transition:0.5s linear all;
-    opacity:0;
-}
-
-/*
- The ng-enter-active and ng-move-active
- are where the transition destination properties
- are set so that the animation knows what to
- animate.
-*/
-.notification-item.ng-enter.ng-enter-active,
-.notification-item.ng-move.ng-move-active {
-    opacity:1;
-}
-
-/*
-  We're using CSS keyframe animations for when
-  the leave event is triggered for the element
-  that has the .notification-item class
-*/
-.notification-item.ng-leave {
-    -webkit-animation:0.5s my_animation;
-    -moz-animation:0.5s my_animation;
-    -o-animation:0.5s my_animation;
-    animation:0.5s my_animation;
-}
-
-@keyframes my_animation {
-    from { opacity:1; }
-    to { opacity:0; }
-}
-
-/*
-  Unfortunately each browser vendor requires
-  its own definition of keyframe animation code...
-*/
-@-webkit-keyframes my_animation {
-    from { opacity:1; }
-    to { opacity:0; }
-}
-
-@-moz-keyframes my_animation {
-    from { opacity:1; }
-    to { opacity:0; }
-}
-
-@-o-keyframes my_animation {
-    from { opacity:1; }
-    to { opacity:0; }
-}
-```
 
 ## Unit tests
 You can run unit test using Karma
-``karma start karma.conf.js``
+``gulp``
 
 ## Contributing
 

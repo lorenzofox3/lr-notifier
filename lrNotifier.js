@@ -56,20 +56,16 @@
     });
 
     module.directive('lrNotificationStackContainer', ['lrNotifier', function (notifier) {
-        return{
-            scope: {},
-            transclude: true,
-            template: '<ul class="notification-collection">' +
-                '<li class="notification-item" ng-click="remove(notification)" ng-transclude="" ng-class="notification.level" ng-repeat="notification in notifications"></li>' +
-                '</ul>',
-            link: function (scope, element, attr) {
-                var channelName = attr.lrNotificationStackContainer,
-                    channel = notifier(channelName);
-                scope.notifications = channel.getChannel();
-                scope.remove = function (notification) {
-                    channel.removeNotification(notification);
-                };
-            }
+        return {
+            controller: ['lrNotifier', '$attrs', function stackController(notifier, $attrs) {
+                var channelName = $attrs.lrNotificationStackContainer || 'global';
+                var channel = notifier(channelName);
+                this.notifications = notifier(channelName).getChannel();
+                this.removeNotification = channel.removeNotification;
+            }],
+            controllerAs: 'lrNotifierCtrl'
         };
-    }]);
+    }])
+
+
 })(angular);
